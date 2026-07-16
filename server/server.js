@@ -6,6 +6,7 @@ import mongoose  from 'mongoose';
 import cors from "cors";
 import connectDb from './config/mongodb.js';
 import authRouter from './routes/auth.routes.js';
+import userRouter from './routes/user.routes.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -26,6 +27,7 @@ app.get("/", (req,res) =>{
 });
 
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
 
 if(process.env.NODE_ENV === 'development'){
     app.listen(port, ()=>{
