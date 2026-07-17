@@ -31,11 +31,10 @@ const isAuth = async (req, res, next) => {
         
     } catch (error) {
         console.log(error);
-        res.console.log(500).json({
+        return res.status(500).json({
             success: false,
             message: "Internal Server Error !"
-        })
-        
+        });
     }
 
 };
