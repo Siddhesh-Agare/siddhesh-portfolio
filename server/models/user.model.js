@@ -15,7 +15,61 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+    },
+    phone:{
+        type:String,
+
+    },
+    whatsappNumber:{
+        type:String,
+    },
+    address:{
+        type:String,
+    },
+    city:{
+        type:String,
+    },
+    state:{
+        type:String
+    },
+    country:{
+        type:String
+    },
+    title:{
+        String
+    },
+    intro:{
+        type:String
+    },
+    description:{
+        type:String
+    },
+    github:{
+        type:String
+    },
+    linkedin:{
+        type:String
+    },
+    instagram:{
+        type:String
+    },
+    facebook:{
+        type:String
+    },
+    twitter:{
+        type:String
+    },
+    youtube:{
+        type:String
+    },
+    profilePic:{
+        type:String
+    },
+    isAvailable:{
+        type:Boolean,
+        default:true
     }
+
 });
 
 const UserModel = mongoose.models.User || mongoose.model("User", userSchema);
