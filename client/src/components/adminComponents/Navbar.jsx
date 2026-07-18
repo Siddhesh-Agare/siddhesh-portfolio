@@ -14,16 +14,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#05060a]/70 antialiased backdrop-blur-2xl">
+    <nav className="sticky top-0 z-50 w-full border-b border-blue-400/[0.08] bg-[#020817]/70 antialiased backdrop-blur-2xl">
       {/* Crystal highlight: a hairline of light along the very top edge */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/25 to-transparent" />
 
       <div className="w-full px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}
           <div className="flex select-none items-center gap-3">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-indigo-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-              <div className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-indigo-500/20 blur-xl" />
+            <div className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-blue-400/10 bg-blue-950/40 text-blue-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <div className="pointer-events-none absolute -inset-2 -z-10 rounded-2xl bg-blue-500/20 blur-xl" />
               <RiShieldUserLine className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
@@ -38,7 +38,7 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center">
             <button
               onClick={handleLogout}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-slate-300 backdrop-blur-md transition-all duration-200 hover:border-rose-400/30 hover:bg-rose-500/10 hover:text-rose-300 active:scale-95"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-blue-400/10 bg-blue-950/30 px-4 py-2 text-sm font-semibold text-slate-300 backdrop-blur-md transition-all duration-200 hover:border-rose-400/30 hover:bg-rose-500/10 hover:text-rose-300 active:scale-95"
             >
               <RiLogoutBoxRLine className="h-4 w-4" />
               Logout
@@ -51,7 +51,7 @@ const Navbar = () => {
               onClick={() => setIsOpen((o) => !o)}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
-              className="inline-flex cursor-pointer items-center justify-center rounded-xl border border-transparent p-2 text-slate-400 transition-colors hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
+              className="inline-flex cursor-pointer items-center justify-center rounded-xl border border-transparent p-2 text-slate-400 transition-colors hover:border-blue-400/10 hover:bg-blue-950/40 hover:text-white"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isOpen ? (
@@ -91,7 +91,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.18, ease: 'easeInOut' }}
-            className="absolute left-0 right-0 overflow-hidden border-t border-white/[0.06] bg-[#05060a]/90 shadow-2xl shadow-black/60 backdrop-blur-2xl md:hidden"
+            className="absolute left-0 right-0 overflow-hidden border-t border-blue-400/[0.08] bg-[#020817]/90 shadow-2xl shadow-black/60 backdrop-blur-2xl md:hidden"
           >
             <div className="px-4 py-4">
               <button

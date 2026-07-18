@@ -26,8 +26,8 @@ const linkClasses = ({ isActive }, collapsed) =>
     collapsed ? 'justify-center' : ''
   } ${
     isActive
-      ? 'border-indigo-400/30 bg-indigo-500/15 text-indigo-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]'
-      : 'border-transparent text-slate-400 hover:border-white/10 hover:bg-white/[0.04] hover:text-white'
+      ? 'border-blue-400/30 bg-blue-500/15 text-blue-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]'
+      : 'border-transparent text-slate-400 hover:border-blue-400/10 hover:bg-blue-950/40 hover:text-white'
   }`;
 
 const NavItems = ({ collapsed, onNavigate }) => (
@@ -77,7 +77,7 @@ const Sidebar = () => {
       <button
         onClick={() => setMobileOpen(true)}
         aria-label="Open navigation"
-        className="fixed left-4 top-[4.5rem] z-30 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-slate-300 shadow-lg shadow-black/40 backdrop-blur-xl transition-colors hover:text-white md:hidden"
+        className="fixed left-4 top-[4.5rem] z-30 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/10 bg-blue-950/50 text-slate-300 shadow-lg shadow-black/40 backdrop-blur-xl transition-colors hover:text-white md:hidden"
       >
         <RiMenu3Line className="h-5 w-5" />
       </button>
@@ -101,9 +101,9 @@ const Sidebar = () => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-white/[0.07] bg-[#05060a]/95 py-4 shadow-2xl shadow-black/60 backdrop-blur-2xl md:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-blue-400/[0.09] bg-[#020817]/95 py-4 shadow-2xl shadow-black/60 backdrop-blur-2xl md:hidden"
             >
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-blue-200/15 to-transparent" />
               <div className="mb-4 flex items-center justify-between px-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Navigation
@@ -111,7 +111,7 @@ const Sidebar = () => {
                 <button
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close navigation"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-white/[0.06] hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-blue-950/50 hover:text-white"
                 >
                   <RiCloseLine className="h-5 w-5" />
                 </button>
@@ -128,10 +128,10 @@ const Sidebar = () => {
         transition={{ duration: 0.25, ease: 'easeInOut' }}
         className="sticky top-[4.75rem] hidden h-[calc(100vh-5.5rem)] shrink-0 flex-col self-start md:ml-3 md:flex"
       >
-        <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] py-4 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-2xl">
+        <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-blue-400/[0.09] bg-blue-950/20 py-4 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-2xl">
           {/* Crystal sheen */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/20 to-transparent" />
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
 
           <NavItems collapsed={collapsed} />
 
@@ -139,7 +139,7 @@ const Sidebar = () => {
             <button
               onClick={() => setCollapsed((c) => !c)}
               aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-              className={`flex w-full items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:text-white ${
+              className={`flex w-full items-center gap-3 rounded-xl border border-blue-400/10 bg-blue-950/30 px-3 py-2.5 text-sm font-medium text-slate-400 transition-colors hover:text-white ${
                 collapsed ? 'justify-center' : ''
               }`}
             >
