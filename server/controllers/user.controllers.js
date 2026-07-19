@@ -65,7 +65,7 @@ export const updateProfile = async(req, res)=>{
                  profilePic = await uploadOnCloudinary(req.file.buffer);
            } catch (error) {
             console.log(error);
-            return res.status(500).json({success:false, message:"error white uploading image"});
+            return res.status(500).json({success:false, message:"error while uploading image"});
            }
         }
 
