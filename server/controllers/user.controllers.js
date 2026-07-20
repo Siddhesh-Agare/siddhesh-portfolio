@@ -30,7 +30,6 @@ export const getCurrentUsers = async (req, res) => {
 }
   
 export const updateProfile = async(req, res)=>{
-    console.log("### RUNNING UPDATED updateProfile CODE ###");
     try {
         const userId = req.userId;
         let {name, 
@@ -65,11 +64,10 @@ export const updateProfile = async(req, res)=>{
            try {
                  profilePic = await uploadOnCloudinary(req.file.buffer);
            } catch (error) {
-            console.log("CLOUDINARY ERROR DETAILS:", JSON.stringify(error, null, 2));
+            console.log(error, "error while uploading image to cloudinary");
             return res.status(500).json({
                 success:false,
-                message: error?.message || "while  gfahauploading image",
-                cloudinaryError: error, // TEMPORARY — remove once debugged
+                message: error?.message || "error while uploading image",
             });
            }
         }
