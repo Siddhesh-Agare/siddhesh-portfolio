@@ -9,7 +9,7 @@ const Skills = () => {
   const fetchSkills = useFetchSkills();
   const { skills } = useSelector((state) => state.user);
   const [previewImage, setPreviewImage] = useState(
-    "https://imgs.search.brave.com/TiVH6uLgl3DM0z-QQHpPPx2BFW3Kua8Cc-mQzPCa93Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vdmlk/ZW9zL3RodW1ibmFp/bHMvb3JpZ2luYWxz/LzhmLzQ0LzExLzhm/NDQxMTEwN2VhZjAx/MjYxODZlYTE4OTFl/Yjg4YjIzLjAwMDAw/MDAuanBn",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyFmIddWvM22FtAnnhsGyn2ddCSxm-mdsNFdriLg_I_w&s=10",
   );
   const [skillImage, setSkillImage] = useState(null);
   const [skillLevel, setSkillLevel] = useState(0);
@@ -95,22 +95,23 @@ const Skills = () => {
   return (
     <div className="space-y-6">
       {/* Upper Content Control Header Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#282828] pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blue-400/10 pb-5">
         <div>
-          <h1 className="text-xl font-semibold text-[#F1F1F1] tracking-tight flex items-center gap-2">
-            <FiCpu className="text-[#3EA6FF] h-5 w-5" />
+          <h1 className="text-xl font-semibold text-white tracking-tight flex items-center gap-2">
+            <FiCpu className="text-blue-400 h-5 w-5" />
             Skills Workspace
           </h1>
-          <p className="text-xs text-[#AAAAAA] mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Add new technologies or manage your existing tech stack.
           </p>
         </div>
       </div>
 
-      {/* Main Panel Input Surface */}
-      <div className="bg-[#1F1F1F] border border-[#282828] rounded-xl overflow-hidden">
-        <div className="border-b border-[#282828] bg-[#161616]/60 p-5">
-          <h3 className="text-sm font-bold text-[#F1F1F1] uppercase tracking-wider">
+      {/* Main Panel Input Surface — navy-blue glass panel */}
+      <div className="relative overflow-hidden rounded-2xl border border-blue-400/[0.09] bg-blue-950/20 backdrop-blur-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7)]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/20 to-transparent" />
+        <div className="border-b border-blue-400/10 bg-blue-950/20 p-5">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wider">
             Add New Skill
           </h3>
         </div>
@@ -118,15 +119,15 @@ const Skills = () => {
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
           <div className="flex flex-col md:flex-row items-start gap-8">
             {/* Image Upload Area (Matches Profile Page UI) */}
-            <div className="relative group w-28 h-28 rounded-2xl border-2 border-dashed border-[#333333] hover:border-[#3EA6FF] transition-all flex-shrink-0 flex items-center justify-center overflow-hidden bg-[#0F0F0F]">
+            <div className="relative group w-28 h-28 rounded-2xl border-2 border-dashed border-blue-400/20 hover:border-blue-400/60 transition-all flex-shrink-0 flex items-center justify-center overflow-hidden bg-blue-950/30">
               <img
                 src={previewImage}
                 alt="Skill preview"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 p-1"
               />
               <label className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center cursor-pointer transition-all duration-150">
-                <FiUploadCloud className="text-[#F1F1F1] h-6 w-6 mb-1" />
-                <span className="text-[10px] text-[#F1F1F1] font-bold uppercase tracking-wider">
+                <FiUploadCloud className="text-white h-6 w-6 mb-1" />
+                <span className="text-[10px] text-white font-bold uppercase tracking-wider">
                   Upload Icon
                 </span>
                 <input
@@ -142,7 +143,7 @@ const Skills = () => {
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Text Input Block */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-[#AAAAAA] uppercase tracking-wider block">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                   Skill Name
                 </label>
                 <input
@@ -150,17 +151,17 @@ const Skills = () => {
                   placeholder="e.g. React, Node.js"
                   onChange={(e) => setSkillName(e.target.value)}
                   value={skillName}
-                  className="w-full px-4 py-2.5 bg-[#0F0F0F] border border-[#282828] rounded-xl text-sm placeholder:text-[#606060] text-[#F1F1F1] transition-all outline-none focus:border-[#3EA6FF]"
+                  className="w-full px-4 py-2.5 bg-blue-950/30 border border-blue-400/10 rounded-xl text-sm placeholder:text-slate-600 text-white transition-all outline-none focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/20"
                 />
               </div>
 
               {/* Range Slider Configuration Block */}
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-bold text-[#AAAAAA] uppercase tracking-wider block">
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                     Skill Level
                   </label>
-                  <span className="text-xs font-mono font-bold text-[#3EA6FF] bg-[#3EA6FF]/10 px-2 py-0.5 rounded border border-[#3EA6FF]/20">
+                  <span className="text-xs font-mono font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-400/20">
                     {skillLevel}%
                   </span>
                 </div>
@@ -172,7 +173,7 @@ const Skills = () => {
                     max="100"
                     value={skillLevel}
                     onChange={(e) => setSkillLevel(e.target.value)}
-                    className="w-full h-1.5 bg-[#0F0F0F] rounded-lg cursor-pointer appearance-none accent-[#3EA6FF]"
+                    className="w-full h-1.5 bg-blue-950/30 rounded-lg cursor-pointer appearance-none accent-blue-400"
                   />
                 </div>
               </div>
@@ -184,10 +185,10 @@ const Skills = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full md:w-auto px-6 flex items-center justify-center gap-2 bg-[#3EA6FF] hover:bg-[#65B8FF] disabled:bg-[#3EA6FF]/20 disabled:text-[#AAAAAA]/50 disabled:cursor-not-allowed text-[#0F0F0F] text-xs font-semibold h-10 rounded-lg transition-colors cursor-pointer focus:outline-none"
+              className="w-full md:w-auto px-6 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 disabled:bg-blue-500/20 disabled:text-slate-400/50 disabled:cursor-not-allowed text-[#020817] text-xs font-semibold h-10 rounded-lg transition-colors cursor-pointer focus:outline-none"
             >
               {loading ? (
-                <div className="h-4 w-4 border-2 border-[#0F0F0F]/30 border-t-[#0F0F0F] rounded-full animate-spin" />
+                <div className="h-4 w-4 border-2 border-[#020817]/30 border-t-[#020817] rounded-full animate-spin" />
               ) : (
                 <span>Add Skill</span>
               )}
@@ -198,7 +199,7 @@ const Skills = () => {
 
       {/* Header Separation for Skills Collection Grid */}
       <div className="pt-4">
-        <h3 className="text-sm font-bold text-[#F1F1F1] uppercase tracking-wider mb-5">
+        <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-5">
           Active Skills Portfolio
         </h3>
 
@@ -207,26 +208,27 @@ const Skills = () => {
           {skills?.map((skill) => (
             <div
               key={skill._id}
-              className="bg-[#1F1F1F] border border-[#282828] rounded-xl p-4 flex flex-col items-center justify-between text-center min-h-[190px] transition-all hover:border-[#3EA6FF]/50 hover:bg-[#252525]"
+              className="relative overflow-hidden rounded-2xl border border-blue-400/[0.09] bg-blue-950/20 backdrop-blur-xl p-4 flex flex-col items-center justify-between text-center min-h-[190px] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-all hover:border-blue-400/30 hover:bg-blue-950/30"
             >
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/15 to-transparent" />
               <img
                 src={skill.skillImage}
                 alt="skill-image"
-                className="w-16 h-16 object-contain p-2 rounded-xl bg-[#0F0F0F] border border-[#282828]"
+                className="w-16 h-16 object-contain p-2 rounded-xl bg-blue-950/30 border border-blue-400/10"
               />
               <div className="mt-3 w-full">
-                <h3 className="text-sm font-semibold text-[#F1F1F1] truncate px-1">
+                <h3 className="text-sm font-semibold text-white truncate px-1">
                   {skill.skillName}
                 </h3>
-                <p className="text-xs font-mono font-bold text-[#AAAAAA] mt-1">
+                <p className="text-xs font-mono font-bold text-slate-400 mt-1">
                   Level:{" "}
-                  <span className="text-[#3EA6FF]">{skill.skillLevel}%</span>
+                  <span className="text-blue-400">{skill.skillLevel}%</span>
                 </p>
               </div>
 
               <button
                 onClick={() => deleteSkill(skill._id)}
-                className="mt-4 flex items-center justify-center gap-1.5 px-2 py-1.5 text-[10px] font-bold text-[#AAAAAA] uppercase tracking-wider bg-[#0F0F0F] border border-[#282828] rounded-lg hover:text-[#FF4E4E] hover:bg-[#FF4E4E]/10 hover:border-[#FF4E4E]/20 transition-all cursor-pointer w-full"
+                className="mt-4 flex items-center justify-center gap-1.5 px-2 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-blue-950/30 border border-blue-400/10 rounded-lg hover:text-rose-400 hover:bg-rose-500/10 hover:border-rose-400/20 transition-all cursor-pointer w-full"
               >
                 <FiTrash2 className="h-3 w-3" /> Delete
               </button>
