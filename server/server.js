@@ -7,6 +7,7 @@ import cors from "cors";
 import connectDb from './config/mongodb.js';
 import authRouter from './routes/auth.routes.js';
 import userRouter from './routes/user.routes.js';
+import skillRouter from './routes/skill.routes.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -28,6 +29,7 @@ app.get("/", (req,res) =>{
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+app.use('/api/skill', skillRouter);
 
 if(process.env.NODE_ENV === 'development'){
     app.listen(port, ()=>{
