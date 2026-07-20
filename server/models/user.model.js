@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
         type:String
     },
     title:{
-        String
+        type:String
     },
     intro:{
         type:String
