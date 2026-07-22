@@ -8,6 +8,7 @@ const userSlice = createSlice({
         loading: false,
         skills: [],
         projects: [],
+        experiences: [],
     },
     reducers:{
         setUserData: (state, action)=>{
@@ -25,9 +26,12 @@ const userSlice = createSlice({
         setProjects:(state, action)=>{
             state.projects= action.payload;
         },
+         setExperiences: (state, action) => {
+            state.experiences = action.payload;
+    },
     },
 })
 
 export default userSlice.reducer;
 
-export const {setUserData, setToken, setLoading, setSkills, setProjects} = userSlice.actions;
+export const {setUserData, setToken, setLoading, setSkills, setProjects,  setExperiences,} = userSlice.actions;

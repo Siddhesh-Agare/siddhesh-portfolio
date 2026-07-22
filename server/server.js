@@ -9,6 +9,7 @@ import authRouter from './routes/auth.routes.js';
 import userRouter from './routes/user.routes.js';
 import skillRouter from './routes/skill.routes.js';
 import projectRouter from './routes/project.routes.js';
+import experienceRouter from './routes/experience.routes.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -32,7 +33,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/skill', skillRouter);
 app.use('/api/project', projectRouter);
-
+app.use('/api/experience', experienceRouter);
 if(process.env.NODE_ENV === 'development'){
     app.listen(port, ()=>{
         console.log(`Server is running on port ${port}`);
