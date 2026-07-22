@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { motion, AnimatePresence } from "motion/react";
 import useFetchSkills from "../../hooks/useFetchSkills";
 import { useSelector } from "react-redux";
-import { FiUploadCloud, FiTrash2, FiCpu } from "react-icons/fi";
+import { FiUploadCloud, FiTrash2, FiCpu, FiInbox } from "react-icons/fi";
 
 const Skills = () => {
   const fetchSkills = useFetchSkills();
@@ -165,7 +166,7 @@ const Skills = () => {
                     {skillLevel}%
                   </span>
                 </div>
-                <div className="pt-3">
+                <div className="pt-3 space-y-2">
                   <input
                     type="range"
                     name="skillLevel"
@@ -175,6 +176,13 @@ const Skills = () => {
                     onChange={(e) => setSkillLevel(e.target.value)}
                     className="w-full h-1.5 bg-blue-950/30 rounded-lg cursor-pointer appearance-none accent-blue-400"
                   />
+                  <div className="h-1.5 w-full rounded-full bg-blue-950/40 overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-300"
+                      animate={{ width: `${skillLevel}%` }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -203,38 +211,67 @@ const Skills = () => {
           Active Skills Portfolio
         </h3>
 
-        {/* Dynamic Studio Grid Layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {skills?.map((skill) => (
-            <div
-              key={skill._id}
-              className="relative overflow-hidden rounded-2xl border border-blue-400/[0.09] bg-blue-950/20 backdrop-blur-xl p-4 flex flex-col items-center justify-between text-center min-h-[190px] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-all hover:border-blue-400/30 hover:bg-blue-950/30"
-            >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/15 to-transparent" />
-              <img
-                src={skill.skillImage}
-                alt="skill-image"
-                className="w-16 h-16 object-contain p-2 rounded-xl bg-blue-950/30 border border-blue-400/10"
-              />
-              <div className="mt-3 w-full">
-                <h3 className="text-sm font-semibold text-white truncate px-1">
-                  {skill.skillName}
-                </h3>
-                <p className="text-xs font-mono font-bold text-slate-400 mt-1">
-                  Level:{" "}
-                  <span className="text-blue-400">{skill.skillLevel}%</span>
-                </p>
-              </div>
+        {skills?.length ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <AnimatePresence initial={false}>
+              {skills.map((skill) => (
+                <motion.div
+                  key={skill._id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.2 }}
+                  className="group relative overflow-hidden rounded-2xl border border-blue-400/[0.09] bg-blue-950/20 backdrop-blur-xl p-4 flex flex-col items-center text-center shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-colors hover:border-blue-400/30 hover:bg-blue-950/30"
+                >
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200/15 to-transparent" />
 
-              <button
-                onClick={() => deleteSkill(skill._id)}
-                className="mt-4 flex items-center justify-center gap-1.5 px-2 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-blue-950/30 border border-blue-400/10 rounded-lg hover:text-rose-400 hover:bg-rose-500/10 hover:border-rose-400/20 transition-all cursor-pointer w-full"
-              >
-                <FiTrash2 className="h-3 w-3" /> Delete
-              </button>
-            </div>
-          ))}
-        </div>
+                  <button
+                    onClick={() => deleteSkill(skill._id)}
+                    aria-label={`Delete ${skill.skillName}`}
+                    className="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-lg bg-blue-950/60 border border-blue-400/10 text-slate-400 opacity-0 group-hover:opacity-100 hover:text-rose-400 hover:bg-rose-500/10 hover:border-rose-400/20 transition-all cursor-pointer"
+                  >
+                    <FiTrash2 className="h-3.5 w-3.5" />
+                  </button>
+
+                  <img
+                    src={skill.skillImage}
+                    alt="skill-image"
+                    className="w-16 h-16 object-contain p-2 rounded-xl bg-blue-950/30 border border-blue-400/10 mt-2"
+                  />
+
+                  <div className="mt-3 w-full">
+                    <h3 className="text-sm font-semibold text-white truncate px-1">
+                      {skill.skillName}
+                    </h3>
+
+                    <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                      <span>Proficiency</span>
+                      <span className="text-blue-400">{skill.skillLevel}%</span>
+                    </div>
+                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-blue-950/40 overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-300"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.skillLevel}%` }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-blue-400/20 bg-blue-950/10 py-14 text-center">
+            <FiInbox className="h-6 w-6 text-slate-500" />
+            <p className="text-sm text-slate-400">No skills added yet.</p>
+            <p className="text-xs text-slate-600">
+              Use the form above to add your first one.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
