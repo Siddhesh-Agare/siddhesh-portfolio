@@ -90,7 +90,7 @@ export const deleteService = async (req, res) => {
 
 export const getAdminServices = async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.userId;
     const user = await UserModel.findById(userId);
     if (!user) {
       return res

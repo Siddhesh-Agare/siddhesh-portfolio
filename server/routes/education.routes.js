@@ -10,6 +10,6 @@ const educationRouter = express.Router();
 
 educationRouter.post("/add", isAuth, addEducation);
 educationRouter.delete("/delete/:educationId", isAuth, deleteEducation);
-educationRouter.get("/get-admin-educations/:userId", GetAdminEducation);
+educationRouter.get("/get-admin-educations", isAuth, GetAdminEducation);
 
 export default educationRouter;

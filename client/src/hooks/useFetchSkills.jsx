@@ -5,11 +5,15 @@ import { setSkills } from "../redux/slices/userSlice.js";
 const useFetchSkills = () => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const dispatch = useDispatch();
-  const userId = import.meta.env.VITE_USER_ID;
   const fetchSkills = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${serverUrl}/api/skill/get-skills-admin/{$userId}`,
+        `${serverUrl}/api/skill/get-skills-admin`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        },
       );
       if (response?.data?.success) {
         dispatch(setSkills(response?.data?.skills));

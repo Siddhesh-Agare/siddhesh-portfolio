@@ -1,27 +1,29 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setReviews } from "../redux/slices/userSlice.js";
-
-const useFetchReviews = () => {
+import { setProjects } from "../redux/slices/userSlice.js";
+const useFetchProjects = () => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const dispatch = useDispatch();
-  const userId = import.meta.env.VITE_USER_ID;
-
-  const fetchReviews = useCallback(async () => {
+  const fetchProjects = useCallback(async () => {
     try {
-      const response = await axios.get(`${serverUrl}/api/review/get/${userId}`);
-
+      const response = await axios.get(
+        `${serverUrl}/api/project/get-admin-projects`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        },
+      );
       if (response?.data?.success) {
-        dispatch(setReviews(response.data.reviews));
-        console.log(response.data.reviews);
+        dispatch(setProjects(response?.data?.projects));
+        console.log(response?.data?.projects);
       }
     } catch (error) {
-      console.log("error in fetchReviews:", error);
+      console.log(error, "error in useFetchProjects");
     }
-  }, [serverUrl, dispatch, userId]);
-
-  return fetchReviews;
+  }, [serverUrl, dispatch]);
+  return fetchProjects;
 };
 
-export default useFetchReviews;
+export default useFetchProjects;

@@ -9,7 +9,9 @@ import {
 const serviceRouter = express.Router();
 
 serviceRouter.get(
-  "/get-admin-services/:userId",
+  "/get-admin-services",
+  isAuth,
+
   getAdminServices,
 );
 serviceRouter.post("/add", isAuth, upload.single("serviceImage"), addService);
