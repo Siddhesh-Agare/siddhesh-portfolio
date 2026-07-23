@@ -1,29 +1,31 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setProjects } from "../redux/slices/userSlice.js";
-const useFetchProjects = () => {
+import { setServices } from "../redux/slices/userSlice.js";
+const useFetchServices = () => {
+  const token = localStorage.getItem("token");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const dispatch = useDispatch();
-  const fetchProjects = useCallback(async () => {
+
+  const fetchServices = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${serverUrl}/api/project/get-admin-projects`,
+        `${serverUrl}/api/service/get-admin-services`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
       if (response?.data?.success) {
-        dispatch(setProjects(response?.data?.projects));
-        console.log(response?.data?.projects);
+        dispatch(setServices(response?.data?.services));
+        console.log(response?.data?.services);
       }
     } catch (error) {
-      console.log(error, "error in useFetchProjects");
+      console.log(error, "error in fetchServices");
     }
-  }, [serverUrl, dispatch]);
-  return fetchProjects;
+  }, [serverUrl, token, dispatch]);
+  return fetchServices;
 };
 
-export default useFetchProjects;
+export default useFetchServices;
