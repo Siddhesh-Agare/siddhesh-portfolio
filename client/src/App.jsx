@@ -11,7 +11,7 @@ import Projects from './pages/adminPages/Projects';
 import Skills from './pages/adminPages/Skills';
 import Education from './pages/adminPages/Education';
 import Service from './pages/adminPages/Service';
-import Reviews from './pages/adminPages/reviews';
+import Reviews from './pages/adminPages/Reviews';
 
 const App = () => {
   
