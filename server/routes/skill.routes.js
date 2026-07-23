@@ -6,7 +6,7 @@ import { addSkill, getSkillsByAdmin, deleteSkill } from '../controllers/skill.co
  const skillRouter = express.Router();
 
 skillRouter.post('/add', isAuth, upload.single('skillImage'), addSkill);
-skillRouter.get('/get-skills-admin', isAuth, getSkillsByAdmin);
+skillRouter.get('/get-skills-admin/:userId', getSkillsByAdmin);
 skillRouter.delete('/delete/:skillId', isAuth, deleteSkill);
 
  export default skillRouter;

@@ -9,6 +9,6 @@ const experienceRouter = express.Router();
 
 experienceRouter.post("/add", isAuth, addExperience);
 experienceRouter.delete("/delete/:experienceId", isAuth, deleteExperience);
-experienceRouter.get("/get-admin-experiences", isAuth, GetAdminExperience);
+experienceRouter.get("/get-admin-experiences/:userId",GetAdminExperience);
 
 export default experienceRouter;

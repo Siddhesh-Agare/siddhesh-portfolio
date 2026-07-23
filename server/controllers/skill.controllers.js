@@ -82,7 +82,7 @@ export const deleteSkill = async (req, res) => {
 
 export const getSkillsByAdmin = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.params.userId;
     const user = await UserModel.findById(userId);
     if (!user) {
       return res

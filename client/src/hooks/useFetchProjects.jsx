@@ -4,16 +4,12 @@ import { useDispatch } from "react-redux";
 import { setProjects } from "../redux/slices/userSlice.js";
 const useFetchProjects = () => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;
+  const userId = import.meta.env.VITE_USER_ID;
   const dispatch = useDispatch();
   const fetchProjects = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${serverUrl}/api/project/get-admin-projects`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        },
+        `${serverUrl}/api/project/get-admin-projects/{$userId}`,
       );
       if (response?.data?.success) {
         dispatch(setProjects(response?.data?.projects));

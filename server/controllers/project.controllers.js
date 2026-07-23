@@ -82,7 +82,7 @@ export const deleteProject = async(req, res)=>{
 
 export const getAdminProjects = async(req, res)=>{
     try {
-        const userId = req.userId;
+        const userId = req.params.userId;
         const user = await UserModel.findById(userId);
             if(!user){
                 return res

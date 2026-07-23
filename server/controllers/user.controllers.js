@@ -5,7 +5,7 @@ import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
 export const getCurrentUsers = async (req, res) => {
     try {
 
-        const userId = req.userId;
+        const userId = req.params.userId;
 
         const user = await UserModel.findById(userId).select("-password");
         if(!user){

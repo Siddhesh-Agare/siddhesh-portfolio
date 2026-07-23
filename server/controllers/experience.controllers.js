@@ -63,7 +63,7 @@ export const deleteExperience = async (req, res) => {
 
 export const GetAdminExperience = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.params.userId;
 
     const user = await UserModel.findById(userId);
     if (!user) {
