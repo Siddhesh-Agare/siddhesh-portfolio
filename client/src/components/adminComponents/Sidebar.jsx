@@ -7,6 +7,7 @@ import {
   RiBriefcaseLine,
   RiFolder3Line,
   RiToolsLine,
+  RiGraduationCapLine,
   RiMenu3Line,
   RiCloseLine,
   RiArrowLeftSLine,
@@ -17,6 +18,7 @@ const NAV_ITEMS = [
   { to: '/admin', label: 'Dashboard', icon: RiDashboardLine, end: true },
   { to: '/admin/profile', label: 'Profile', icon: RiUserLine },
   { to: '/admin/experience', label: 'Experience', icon: RiBriefcaseLine },
+  { to: '/admin/education', label: 'Education', icon: RiGraduationCapLine },
   { to: '/admin/projects', label: 'Projects', icon: RiFolder3Line },
   { to: '/admin/skills', label: 'Skills', icon: RiToolsLine },
 ];

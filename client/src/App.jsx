@@ -9,6 +9,7 @@ import Profile from './pages/adminPages/Profile';
 import Experience from './pages/adminPages/Experience';
 import Projects from './pages/adminPages/Projects';
 import Skills from './pages/adminPages/Skills';
+import Education from './pages/adminPages/Education';
 
 const App = () => {
   
@@ -23,6 +24,7 @@ const App = () => {
     <Route path='experience' element={<Experience/>}/>
     <Route path='projects' element={<Projects/>}/>
     <Route path='skills' element={<Skills/>}/>
+    <Route path='education' element={<Education/>}/>
     </Route>
     <Route path='admin/login' element={ <Login/>}/>
     <Route path='admin/register' element={<Register/>}/>
