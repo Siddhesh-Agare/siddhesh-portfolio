@@ -8,6 +8,8 @@ import {
   RiFolder3Line,
   RiToolsLine,
   RiGraduationCapLine,
+  RiServiceLine,
+  RiChatQuoteLine,
   RiMenu3Line,
   RiCloseLine,
   RiArrowLeftSLine,
@@ -21,6 +23,8 @@ const NAV_ITEMS = [
   { to: '/admin/education', label: 'Education', icon: RiGraduationCapLine },
   { to: '/admin/projects', label: 'Projects', icon: RiFolder3Line },
   { to: '/admin/skills', label: 'Skills', icon: RiToolsLine },
+  { to: '/admin/services', label: 'Services', icon: RiServiceLine },
+  { to: '/admin/reviews', label: 'Reviews', icon: RiChatQuoteLine },
 ];
 
 const linkClasses = ({ isActive }, collapsed) =>

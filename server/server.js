@@ -11,6 +11,7 @@ import skillRouter from './routes/skill.routes.js';
 import projectRouter from './routes/project.routes.js';
 import experienceRouter from './routes/experience.routes.js';
 import educationRouter from './routes/education.routes.js';
+import serviceRouter from './routes/service.routes.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -36,6 +37,7 @@ app.use('/api/skill', skillRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/experience', experienceRouter);
 app.use('/api/education', educationRouter);
+app.use('/api/service', serviceRouter);
 if(process.env.NODE_ENV === 'development'){
     app.listen(port, ()=>{
         console.log(`Server is running on port ${port}`);

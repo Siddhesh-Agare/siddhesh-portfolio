@@ -10,6 +10,7 @@ const userSlice = createSlice({
         projects: [],
         experiences: [],
         educations: [],
+        services: [],
     },
     reducers:{
         setUserData: (state, action)=>{
@@ -33,9 +34,12 @@ const userSlice = createSlice({
         setEducations: (state, action)=>{
             state.educations = action.payload;
         },
+        setServices: (state, action) => {
+        state.services = action.payload;
+        },
     },
 })
 
 export default userSlice.reducer;
 
-export const {setUserData, setToken, setLoading, setSkills, setProjects,  setExperiences, setEducations} = userSlice.actions;
+export const {setUserData, setToken, setLoading, setSkills, setProjects,  setExperiences, setEducations, setServices,} = userSlice.actions;
